@@ -135,7 +135,7 @@ public class BTree<T extends Comparable<T>> implements IBTree<T>{
 		ForkJoinPool fjp = new ForkJoinPool();
 		ForEachFJTask<T> fjTask = new ForEachFJTask<T>(this, process);
 		fjp.submit(fjTask);
-		//System.out.println("Sum is" + fjTask.join());
+		fjTask.join();
 	
 	}
 

@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Main {
 	
-	private static final int NUMBER_OF_NUMBERS = 500000;
+	private static final int NUMBER_OF_NUMBERS = 1000000;
 	static BTree<Integer> tree = new BTree<>(0);
 	
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Main {
 		
 		long start = System.currentTimeMillis();
 		
-		int r = new Random().nextInt();
+		int r = tree.getLeftChild().getRightChild().getLeftChild().getLeftChild().getLeftChild().getRightChild().getValue();
 		
 		try{
 			IBTree<Integer> foundTree = tree.findFJ(r);

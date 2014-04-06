@@ -21,23 +21,18 @@ public class ForEachFJTask<T extends Comparable<T>> extends RecursiveTask<T> {
 	protected T compute() {
 		
 		
-		ForEachFJTask<T> left;
-		ForEachFJTask<T> right;
-		
 		if(tree.getLeftChild() != null){
-			System.out.println("Go to left - " + tree.getLeftChild().getValue());
-			left = new ForEachFJTask<T>(tree.getLeftChild(), process);
+			ForEachFJTask<T> left = new ForEachFJTask<T>(tree.getLeftChild(), process);
 			left.fork();
 			left.join();
 		}
 		
 		if(tree.getRightChild() != null){
-			System.out.println("Go to right - " + tree.getRightChild().getValue());
-			right = new ForEachFJTask<T>(tree.getLeftChild(), process);
+			ForEachFJTask<T> right = new ForEachFJTask<T>(tree.getLeftChild(), process);
 			right.fork();
 			right.join();
 		}
-		
+		System.out.println(tree);
 		process.process(tree.getValue());
 		
 		return tree.getValue();
