@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Main {
 	
-	private static final int NUMBER_OF_NUMBERS = 3000000;
+	private static final int NUMBER_OF_NUMBERS = 500000;
 	static BTree<Integer> tree = new BTree<>(0);
 	
 	public static void main(String[] args) {
@@ -42,6 +42,9 @@ public class Main {
 		
 		
 		System.out.println("Found for the " + ((double)(System.currentTimeMillis() - start) / 1000) + " secounds by not cool search");
+		
+		tree.forEachFJ(new MyProcess<Integer>());
+		
 		
 	}
 

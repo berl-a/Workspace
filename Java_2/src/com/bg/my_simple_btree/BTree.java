@@ -126,16 +126,17 @@ public class BTree<T extends Comparable<T>> implements IBTree<T>{
 		
 	}
 	
+	public static Integer sumOfValues;
+	
+	
 	@Override
 	public void forEachFJ(final Process<T> process) {
-<<<<<<< HEAD
+
 		ForkJoinPool fjp = new ForkJoinPool();
-		fjp.submit(new ForEachFJTack())
-=======
-		
->>>>>>> b22a175... orgCom
-		
-		
+		ForEachFJTask<T> fjTask = new ForEachFJTask<T>(this, process);
+		fjp.submit(fjTask);
+		//System.out.println("Sum is" + fjTask.join());
+	
 	}
 
 	
