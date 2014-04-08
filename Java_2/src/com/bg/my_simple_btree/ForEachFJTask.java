@@ -32,7 +32,7 @@ public class ForEachFJTask<T extends Comparable<T>> extends RecursiveTask<T> {
 			right.fork();
 			right.join();
 		}
-		System.out.println(tree);
+		//System.out.println(tree);
 		process.process(tree.getValue());
 		
 		return tree.getValue();
