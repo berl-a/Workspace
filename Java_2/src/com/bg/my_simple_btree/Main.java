@@ -54,7 +54,7 @@ public class Main {
 			t.stop();
 		}
 		threads.clear();
-		System.out.println("Found for the " + ((double)(System.currentTimeMillis() - start)) + " secounds by cool search");
+		System.out.println("Found for the " + ((double)(System.currentTimeMillis() - start)/1000) + " secounds by cool search");
 		
 		start = System.currentTimeMillis();
 		
@@ -84,7 +84,7 @@ public class Main {
 		}
 		threads.clear();
 		
-		System.out.println("Found for the " + ((double)(System.currentTimeMillis() - start)) + " secounds by not cool search");
+		System.out.println("Found for the " + ((double)(System.currentTimeMillis() - start)/1000) + " secounds by not cool search");
 		
 		//tree.forEachFJ(new MyProcess<Integer>());
 		
