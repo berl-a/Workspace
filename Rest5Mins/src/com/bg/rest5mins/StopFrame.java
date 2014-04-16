@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class StopFrame extends JFrame implements ComponentListener {
 
 	
-	public static final String PRINTED_TEXT = "Take a rest!";
+	public static final String PRINTED_TEXT = "Наталіє Іванівно, відпочиньте!";
 
 	public static volatile boolean goCycle = true;
 	
@@ -24,8 +24,8 @@ public class StopFrame extends JFrame implements ComponentListener {
 	public int unblockedTime;
 	public int blockedTime;
 	
-	private static final String unblockingCombination = "0001010";
-	private static final String finishCombination     = "1110101";
+	private static final String unblockingCombination = "000";
+	private static final String finishCombination     = "111";
 	protected static final int COMBINATION_LENGTH = unblockingCombination.length();
 	public String usersCombination = "";
 		

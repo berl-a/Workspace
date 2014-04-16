@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -26,6 +27,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	                            //left, down, right, up
 	public static final int[][] KEYS = {{65, 83, 68, 87},
 								  {37, 40, 39, 38}};
+	
+	private static final Point COORD_IF_SPACE_IS_PRESSED = new Point((int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2, (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);;
 
 	public static Ship ship1;
 	public static Ship ship2;
@@ -33,10 +36,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public int deltaY;
 	
 	GamePanel(){
-		
+		System.out.println("Initialize panel");
 		setLayout(null);
-		ship1 = new Ship(new Rectangle(300, 240, DEFAULT_DIAMETER_OF_SHIP, DEFAULT_DIAMETER_OF_SHIP), DEFAULT_SPEED, Color.BLUE, Color.CYAN, 255);
-		ship2 = new Ship(new Rectangle(250, 450, DEFAULT_DIAMETER_OF_SHIP, DEFAULT_DIAMETER_OF_SHIP),DEFAULT_SPEED, Color.RED, Color.YELLOW, -20);
+		ship1 = new Ship(new Rectangle(300, 240, DEFAULT_DIAMETER_OF_SHIP, DEFAULT_DIAMETER_OF_SHIP), DEFAULT_SPEED, Color.BLUE, new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)), 255);
+		ship2 = new Ship(new Rectangle(250, 450, DEFAULT_DIAMETER_OF_SHIP, DEFAULT_DIAMETER_OF_SHIP),DEFAULT_SPEED, Color.RED, new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)), -20);
 		Timer timer = new Timer(DELAY_OF_REFRESHING, this);
 		timer.setRepeats(true);
 		timer.setActionCommand("timer");
@@ -175,6 +178,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			ship2.setDeltaX((int)ship2.getSpeed());
 		else if(keyCode == KEYS[1][3])
 			ship2.setDeltaY(-(int)ship2.getSpeed());
+		
+		
+		//Go back when space is pressed
+		if(keyCode == KeyEvent.VK_SPACE){
+			ship1.setCoord(new Point(COORD_IF_SPACE_IS_PRESSED.x - ship1.getDiameter(), COORD_IF_SPACE_IS_PRESSED.y));
+			ship2.setCoord(new Point(COORD_IF_SPACE_IS_PRESSED.x, COORD_IF_SPACE_IS_PRESSED.y));
+		}
+		
+		
 	}
 
 

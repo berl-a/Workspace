@@ -2,8 +2,11 @@ package com.bg.rest5mins;
 
 public class MainCycle {
 	
-	public  static final int UNBLOCKED_TIME_MILIS = 60000 * 25;
-	public  static final int BLOCKED_TIME_MILIS   = 60000 * 5;
+	//public  static final int UNBLOCKED_TIME_MILIS = 60000 * 25;
+	//public  static final int BLOCKED_TIME_MILIS   = 60000 * 5;
+	
+	public  static final int UNBLOCKED_TIME_MILIS = 5000 ;
+	public  static final int BLOCKED_TIME_MILIS   = 15000;
 	
 	public static StopFrame frame = new StopFrame();
 	

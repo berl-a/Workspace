@@ -15,7 +15,7 @@ public interface IBTree<T extends Comparable<T>> {
 	
 	public T getValue();
 	
-	public void forEach(final Process<T> p);
+	public void forEach(final Process<T> p, IBTree<T> tree);
 	public void forEachFJ(final Process<T> t);
 	
 	public void add(T value);   
@@ -23,9 +23,9 @@ public interface IBTree<T extends Comparable<T>> {
 	public IBTree<T> find(T value);
 	public IBTree<T> findFJ(T value);
 	
-	public interface Process<T>{
+	public interface Process<T extends Comparable<T>>{
 
-		public void process(T element);
+		public void process(IBTree<T> tree);
 	}
 	
 }

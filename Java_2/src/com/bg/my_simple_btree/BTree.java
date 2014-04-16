@@ -110,19 +110,19 @@ public class BTree<T extends Comparable<T>> implements IBTree<T>{
 		return rootTask.join();
 	}
 	
-	public void forEach(final Process<T> process){
+	public void forEach(final Process<T> process, final IBTree<T> tree){
 		
 		new Thread(){
 			public void run(){
-				new MyProcess<T>().process(getValue());
+				new MyProcess<T>().process(tree);
 			}
 		}.start();
 		
 		if(getLeftChild() != null)
-			getLeftChild().forEach(new MyProcess<T>());
+			getLeftChild().forEach(new MyProcess<T>(), getLeftChild());
 		
 		if(getRightChild() != null)
-			getRightChild().forEach(new MyProcess<T>());
+			getRightChild().forEach(new MyProcess<T>(), getRightChild());
 		
 	}
 	
@@ -133,7 +133,7 @@ public class BTree<T extends Comparable<T>> implements IBTree<T>{
 	public void forEachFJ(final Process<T> process) {
 
 		ForkJoinPool fjp = new ForkJoinPool();
-		ForEachFJTask<T> fjTask = new ForEachFJTask<T>(this, process);
+		ForEachFJAction<T> fjTask = new ForEachFJAction<T>(this, process);
 		fjp.submit(fjTask);
 		fjTask.join();
 	
