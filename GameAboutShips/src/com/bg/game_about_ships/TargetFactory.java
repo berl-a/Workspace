@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class TargetFactory extends Thread {
 
-	private static final int SAFE_TIME_TO_CREATE_A_TARGET = 8000;
-	private static final int FREE_TIME_TO_CREATE_A_TARGET = 5000;
+	private static final int SAFE_TIME_TO_CREATE_A_TARGET = 4000;
+	private static final int FREE_TIME_TO_CREATE_A_TARGET = 3000;
 
 	private static  final  int DEFAULT_DIAMETER_OF_TARGET = 100;
-	private static  final  int DELAY_OF_DIAMETER_OF_TARGET = 300;
+	private static  final  int DELAY_OF_DIAMETER_OF_TARGET = 100;
 	public static Color colorOfTarget = Color.RED;
 	
 	public void run(){

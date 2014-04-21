@@ -28,8 +28,8 @@ public class MyColorChooser implements ColorSelectionModel, MouseListener {
 
 	private JPanel panel;
 	
-	private static final String URL_OF_IMAGE = "res/paletteSmall.jpg";
-	private static final String URL_OF_CURSOR_IMAGE = "res/cursor.png";
+	private static final String URL_OF_IMAGE = "res/paletteBig.png";
+	private static final String URL_OF_CURSOR_IMAGE = "res/cursor1.png";
 	public static BufferedImage image;
 	public static BufferedImage cursorImage;
 	public static Color color;

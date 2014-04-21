@@ -14,8 +14,11 @@ public class MainGameCycle {
 
 	protected static final Color DEFAULT_BACKGROUND_COLOR = Color.WHITE;
 	
+	public static GamePanel gp;
+	
 	private static Timer t;
 
+	
 	public static void main(String[] args) {
 		
 		SwingUtilities.invokeLater(new Runnable(){
@@ -23,7 +26,7 @@ public class MainGameCycle {
 				
 				final JFrame frame = new JFrame();
 				frame.setBounds(0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
-				GamePanel gp = new GamePanel();
+				gp = new GamePanel();
 				frame.setContentPane(gp);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setUndecorated(true);
@@ -45,6 +48,7 @@ public class MainGameCycle {
 				t.start();
 				
 				new TargetFactory().start();
+				//new WallFactory().start();
 			}
 		});
 	
