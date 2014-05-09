@@ -1,0 +1,313 @@
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+0 247
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+48 272
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+106 289
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+165 297
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+226 298
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+287 297
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+351 287
+409 270
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+463 253
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+519 238
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+584 251
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+632 277
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+692 293
+747 309
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+811 325
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+871 343
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+925 367
+985 390
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1043 409
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1103 417
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1158 403
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1209 386
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1256 365
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1299 339
+color 251 50 50 200
+size 50 20
+type  ARMORED_BLOCK
+coord
+1326 313
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+6 224
+55 239
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+93 254
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+134 268
+202 274
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+263 267
+307 250
+361 234
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+407 225
+452 217
+495 217
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+552 208
+609 223
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+636 234
+679 248
+714 259
+784 283
+866 309
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+922 339
+965 352
+1024 372
+1086 382
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+1139 378
+1184 352
+1212 329
+1246 299
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+1283 277
+1319 265
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+23 20
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+36 48
+51 75
+84 126
+122 172
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+150 211
+177 235
+218 203
+245 158
+272 119
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+317 82
+357 55
+403 31
+442 39
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+484 88
+525 131
+567 176
+592 184
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+646 144
+680 103
+726 63
+775 27
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+798 52
+836 139
+860 187
+883 221
+color 251 252 50 200
+size 50 10
+type  NORMAL_BLOCK
+coord
+912 261
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+957 300
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+992 329
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+1057 345
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+1092 320
+1110 283
+1127 246
+1150 206
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+1173 167
+1203 129
+1244 82
+1282 47
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+1309 19
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+402 110
+407 151
+407 196
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+735 149
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+740 204
+751 251
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+1289 148
+1291 181
+1291 215
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+18 143
+color 90 221 32 133
+size 50 10
+type  NORMAL_BLOCK
+coord
+17 170
+16 196
+bat 120 5

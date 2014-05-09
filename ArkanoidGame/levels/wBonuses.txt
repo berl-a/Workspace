@@ -1,0 +1,187 @@
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+13 298
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+92 296
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+168 291
+256 291
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+369 289
+454 280
+553 278
+661 278
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+753 276
+861 270
+1004 270
+1097 270
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+1226 276
+1303 243
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+1255 236
+1189 233
+1087 230
+984 223
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+866 216
+734 219
+575 239
+421 246
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+211 240
+80 236
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+352 233
+color 51 210 210 200
+size 70 20
+type  BONUS_BLOCK
+coord
+22 270
+color 221 60 63 200
+size 50 10
+type  BONUS_BLOCK
+coord
+5 348
+56 349
+color 221 60 63 200
+size 50 10
+type  BONUS_BLOCK
+coord
+114 349
+color 221 60 63 44
+size 50 10
+type  BONUS_BLOCK
+coord
+175 348
+color 221 60 63 44
+size 50 10
+type  BONUS_BLOCK
+coord
+227 348
+color 221 60 63 44
+size 50 10
+type  BONUS_BLOCK
+coord
+282 346
+color 221 60 63 125
+size 50 10
+type  BONUS_BLOCK
+coord
+342 346
+color 221 60 63 125
+size 50 10
+type  BONUS_BLOCK
+coord
+397 342
+450 343
+color 221 60 63 148
+size 50 10
+type  BONUS_BLOCK
+coord
+507 343
+color 221 60 63 148
+size 50 10
+type  BONUS_BLOCK
+coord
+564 339
+626 338
+color 221 60 63 185
+size 50 10
+type  BONUS_BLOCK
+coord
+684 337
+748 335
+color 221 60 63 185
+size 50 10
+type  BONUS_BLOCK
+coord
+814 335
+color 221 60 63 228
+size 50 10
+type  BONUS_BLOCK
+coord
+870 335
+935 332
+color 221 60 63 228
+size 50 10
+type  BONUS_BLOCK
+coord
+1013 331
+color 221 60 63 241
+size 50 10
+type  BONUS_BLOCK
+coord
+1075 328
+color 221 60 63 241
+size 50 10
+type  BONUS_BLOCK
+coord
+1134 327
+color 221 60 63 241
+size 50 10
+type  BONUS_BLOCK
+coord
+1197 326
+color 221 60 63 255
+size 50 10
+type  BONUS_BLOCK
+coord
+1259 326
+1290 341
+color 221 60 63 255
+size 50 10
+type  BONUS_BLOCK
+coord
+1314 357
+color 221 60 63 255
+size 50 10
+type  ARMORED_BLOCK
+coord
+86 401
+164 388
+252 390
+color 221 60 63 255
+size 50 10
+type  ARMORED_BLOCK
+coord
+367 390
+516 399
+676 399
+845 399
+color 221 60 63 255
+size 50 10
+type  ARMORED_BLOCK
+coord
+1022 399
+bat 150 20
