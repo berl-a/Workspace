@@ -98,35 +98,32 @@ public class Brick {
 		*/
 		
 		b.setHitsToDestroy(b.getHitsToDestroy() - 1);
-		System.out.println(b.getHitsToDestroy());
-		MainInArcanoid.panel.repaint();
 		
 		if(b.getHitsToDestroy() == 0){
 			b.setColor(b.getColor().darker());
 			b.setColor(b.getColor().darker());
 			ArcanoidPanel.bricks.remove(b);
-			MainInArcanoid.panel.repaint();
+			ArcanoidPanel.player.setScores(ArcanoidPanel.player.getScores() + b.getTypeOfBlock().getScoresForDestroying());
 		}
 		
-		ArcanoidPanel.player.setScores(ArcanoidPanel.player.getScores() + b.getTypeOfBlock().getScoresForDestroying());
+		if(b.getTypeOfBlock() == ETypeOfBlock.BONUS_BLOCK){
+			b.throughBonus();
+		}
 		
+		MainInArcanoid.panel.repaint();
 	}
 	
-
 	public ETypeOfBlock getTypeOfBlock() {
 		return typeOfBlock;
 	}
 
 	public void setTypeOfBlock(ETypeOfBlock typeOfBlock) {
-		
 		this.typeOfBlock = typeOfBlock;
 		setHitsToDestroy(this.typeOfBlock.getHitsToDestroy());
-		
 	}
 
 	private void setBonus() {
 		bonus = new Bonus(ETypeOfBonus.values()[new Random().nextInt(ETypeOfBonus.values().length)], this);
-		System.out.println(bonus.getTypeOfBonus().toString());
 	}
 
 	public int getHitsToDestroy() {
@@ -143,6 +140,11 @@ public class Brick {
 
 	public void setBonus(Bonus bonus) {
 		this.bonus = bonus;
+	}
+	
+	private void throughBonus() {
+		ArcanoidPanel.addBonus(getBonus());
+		MainInArcanoid.panel.repaint();
 	}
 	
 }

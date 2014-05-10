@@ -1,5 +1,7 @@
 package com.bg.arkanoid;
 
+import java.awt.Point;
+
 import javax.swing.JOptionPane;
 
 public class Player {
@@ -36,6 +38,25 @@ public class Player {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void loseBall() {
+		
+		if(getLifes() == 0)
+			endGame();
+		else
+			setLifes(getLifes() - 1);
+		
+		if(Bonus.backCoordWhenBallFalls){
+			ArcanoidPanel.bat.setCoord(Bonus.oldCoordOfBat);
+			Bonus.backCoordWhenBallFalls = false;
+		}
+		
+		ArcanoidPanel.ball.setDeltaX(Ball.DEFAULT_DELTA_X);
+		ArcanoidPanel.ball.setDeltaY(Ball.DEFAULT_DELTA_Y);
+		ArcanoidPanel.ball.setCoord(new Point((int)(ArcanoidPanel.bat.getCoord().getX() + (ArcanoidPanel.bat.getSize().getWidth() + ArcanoidPanel.ball.getDiameter()) / 2), (int)ArcanoidPanel.bat.getCoord().getY() - 40));
+		
+		Bonus.looseEffect();
 	}
 	
 }

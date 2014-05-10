@@ -1,14 +1,16 @@
 package com.bg.arkanoid;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 
 public class Bat {
 	
+	
 	private Point coord;
-	private Rectangle size;
+	private Dimension size;
+	private Dimension normalSize;
 	private Color color;
 	private double deltaX;
 	
@@ -18,12 +20,14 @@ public class Bat {
 	public void setCoord(Point coord) {
 		this.coord = coord;
 	}
-	public Rectangle getSize() {
+	public Dimension getSize() {
 		return size;
 	}
-	public void setSize(Rectangle size) {
+	public void setSize(Dimension size) {
 		this.size = size;
+		setNormalSize(size);
 	}
+	
 	public Color getColor() {
 		return color;
 	}
@@ -50,9 +54,11 @@ public class Bat {
 	public Line2D getUp2(){
 		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 2), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 3), getCoord().getY());
 	}
+	
 	public Line2D getUp3(){
 		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 3), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 4), getCoord().getY());
 	}
+	
 	public Line2D getUp4(){
 		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 4), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 5), getCoord().getY());
 	}
@@ -78,6 +84,13 @@ public class Bat {
 	
 	public Line2D getRight(){
 		return new Line2D.Double(getCoord().getX() + getSize().getWidth(), getCoord().getY(), getCoord().getX() + getSize().getWidth(), getCoord().getY() + getSize().getHeight());
+	}
+	public Dimension getNormalSize() {
+		return normalSize;
+	}
+	private void setNormalSize(Dimension size) {
+		normalSize = size;
+		
 	}
 	
 }

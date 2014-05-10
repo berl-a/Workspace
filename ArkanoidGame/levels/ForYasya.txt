@@ -1,0 +1,103 @@
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+26 80
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+441 116
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+931 331
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+351 384
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+120 345
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+831 146
+692 391
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+211 166
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+1302 187
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+658 273
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+682 136
+color 44 232 240 200
+size 200 150
+type  ARMORED_BLOCK
+coord
+971 0
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+553 514
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+334 185
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+337 40
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+697 25
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+860 433
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+1092 186
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+542 350
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+339 356
+color 44 3 240 47
+size 200 150
+type  ARMORED_BLOCK
+coord
+770 159
+702 200
+bat 300 50

@@ -95,7 +95,7 @@ public class CoordReader {
 				}
 			}
 			if(scannerWord.equalsIgnoreCase("bat")){
-				ArcanoidPanel.bat.setSize(new Rectangle(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next())));
+				ArcanoidPanel.bat.setSize(new Dimension(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next())));
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {

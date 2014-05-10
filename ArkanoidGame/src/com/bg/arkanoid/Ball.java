@@ -7,21 +7,25 @@ import java.awt.Toolkit;
 
 public class Ball {
 
-	public static final double DEFAULT_DELTA_X = 2d;
-	public static final double DEFAULT_DELTA_Y = 2d;
+	public static final double DEFAULT_DELTA_X = 3d;
+	public static final double DEFAULT_DELTA_Y = 3d;
 	
-	private static final double DEFAULT_DIAMETER = 20d;
+	public static final double DEFAULT_DIAMETER = 15d;
 
 	private static final Point DEFAULT_COORD = new Point((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2 - DEFAULT_DIAMETER / 2), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() -  DEFAULT_DIAMETER * 5));
 
-	private static final Color DEFAULT_COLOR = Color.GRAY;
+	public static final Color DEFAULT_COLOR = Color.YELLOW;
+	
+	public static final Color SUPER_BALL_COLOR = Color.BLUE.brighter();
+	
+	public boolean superBall = false;
 	
 	public Ball(){
 		setCoord(DEFAULT_COORD);
 		setDiameter(DEFAULT_DIAMETER);
 		setColor(DEFAULT_COLOR);
 		setDeltaX(DEFAULT_DELTA_X);
-		setDeltaY(DEFAULT_DELTA_Y);
+		setDeltaY( - DEFAULT_DELTA_Y);
 	}
 	
 	private Point coord;
@@ -30,7 +34,6 @@ public class Ball {
 	private double deltaY;
 	private double addDeltaX;
 	private double addDeltaY;
-	private double speed;
 	
 	private double diameter;
 	private Color color;

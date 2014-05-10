@@ -1,0 +1,75 @@
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+13 376
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+99 377
+177 368
+267 367
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+383 364
+499 346
+623 331
+741 323
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+874 320
+1058 320
+1192 318
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+1235 269
+1183 258
+1052 259
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+929 259
+827 259
+709 260
+602 260
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+484 267
+376 273
+222 300
+108 297
+color 207 230 50 141
+size 80 80
+type  BONUS_BLOCK
+coord
+35 282
+color 56 230 50 141
+size 80 80
+type  ARMORED_BLOCK
+coord
+36 418
+color 56 230 50 141
+size 80 80
+type  ARMORED_BLOCK
+coord
+226 412
+483 370
+661 371
+813 354
+color 56 230 50 141
+size 80 80
+type  ARMORED_BLOCK
+coord
+1006 336
+1193 344
+bat 200 15
