@@ -1,0 +1,228 @@
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+6 342
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+79 316
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+154 294
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+229 274
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1290 354
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1217 331
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1144 309
+color 255 152 19 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1070 290
+color 19 167 237 200
+size 70 30
+type  BONUS_BLOCK
+coord
+303 243
+color 19 167 237 200
+size 70 30
+type  BONUS_BLOCK
+coord
+377 215
+color 19 167 237 200
+size 70 30
+type  BONUS_BLOCK
+coord
+996 262
+color 19 167 237 200
+size 70 30
+type  BONUS_BLOCK
+coord
+917 232
+color 184 166 204 219
+size 90 10
+type  ARMORED_BLOCK
+coord
+827 207
+color 184 166 204 219
+size 90 10
+type  ARMORED_BLOCK
+coord
+728 205
+color 184 166 204 219
+size 90 10
+type  ARMORED_BLOCK
+coord
+627 204
+color 184 166 204 219
+size 90 10
+type  ARMORED_BLOCK
+coord
+528 203
+color 184 166 204 219
+size 90 10
+type  ARMORED_BLOCK
+coord
+432 201
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+24 23
+19 63
+17 113
+16 165
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+16 215
+12 279
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+90 25
+91 65
+96 106
+93 172
+92 213
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+92 262
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+170 19
+169 56
+169 121
+174 169
+178 202
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+173 239
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1278 28
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1279 57
+1283 91
+1287 142
+1290 194
+1295 264
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1196 21
+1197 76
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1200 119
+1201 167
+1200 207
+1208 253
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1108 10
+1111 51
+1111 129
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1109 173
+1112 213
+1114 245
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+1023 51
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+975 33
+928 27
+869 22
+808 23
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+736 31
+655 54
+563 84
+489 99
+color 119 221 97 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+419 93
+380 79
+343 42
+288 14
+color 252 239 18 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+292 201
+344 160
+391 140
+color 252 239 18 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+461 137
+547 140
+625 155
+color 252 239 18 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+692 171
+767 179
+861 178
+915 164
+color 252 239 18 219
+size 50 25
+type  NORMAL_BLOCK
+coord
+981 137
+1027 111
+1043 96
+bat 150 10

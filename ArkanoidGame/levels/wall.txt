@@ -1,0 +1,26 @@
+color 50 50 50 43
+size 50 600
+type  ARMORED_BLOCK
+coord
+650 0
+650 0
+650 0
+650 0
+650 0
+color 50 50 50 43
+size 50 600
+type  ARMORED_BLOCK
+coord
+650 0
+650 0
+650 0
+650 0
+650 0
+color 50 50 50 43
+size 50 600
+type  ARMORED_BLOCK
+coord
+650 0
+650 0
+650 0
+bat 200 20

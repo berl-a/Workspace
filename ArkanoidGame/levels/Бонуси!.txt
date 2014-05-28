@@ -1,0 +1,168 @@
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+9 351
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+26 319
+122 286
+186 271
+287 262
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+362 262
+454 288
+483 356
+374 387
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+240 375
+189 424
+384 456
+522 445
+607 419
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+696 364
+759 305
+811 251
+887 191
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+900 181
+864 299
+812 371
+726 465
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+907 539
+928 526
+973 480
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1017 430
+1035 395
+1058 359
+1079 330
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1103 297
+1136 245
+1160 210
+1183 174
+1206 122
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1213 95
+1196 67
+1171 47
+1137 26
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1031 12
+945 15
+873 30
+761 50
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+693 58
+912 203
+896 246
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+873 278
+809 328
+768 370
+780 384
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+735 411
+729 424
+667 481
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+653 503
+691 498
+576 510
+549 512
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+469 518
+390 516
+335 495
+559 381
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+652 276
+784 168
+875 133
+736 134
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+819 102
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+700 87
+581 110
+632 220
+723 186
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+517 243
+1087 491
+1164 365
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1135 423
+986 537
+1160 528
+1238 319
+color 251 50 50 200
+size 70 30
+type  BONUS_BLOCK
+coord
+1244 252
+1167 401
+477 166
+bat 200 10
