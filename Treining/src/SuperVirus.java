@@ -52,15 +52,14 @@ public class SuperVirus extends JPanel implements KeyListener, MouseListener{
 		Robot r;
 		try {
 			r = new Robot();
-			image=r.createScreenCapture(new Rectangle(0,22,(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()));
+			image=r.createScreenCapture(new Rectangle(0,0,(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(),(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()));
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}
-		//mainTimer.start();
 		addKeyListener(this);
 		addMouseListener(this);
 		setFocusable(true);
-		
+		//mainTimer.start();
 	}
 		
 	
@@ -71,7 +70,6 @@ public class SuperVirus extends JPanel implements KeyListener, MouseListener{
 		}
 		
 	/*
-	 *
 		public void actionPerformed(ActionEvent e) {
 			x--;
 			y--;
@@ -79,10 +77,8 @@ public class SuperVirus extends JPanel implements KeyListener, MouseListener{
 			if(x<=-200){
 				x=(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 				y=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-	
 			}			
-	}
-	
+		}
 	 */
 
 	@Override
@@ -123,7 +119,6 @@ public class SuperVirus extends JPanel implements KeyListener, MouseListener{
 						}
 					}
 					FileWriter fw=new FileWriter(f);
-					Scanner sc=new Scanner(f);
 					fw.write(s);
 					fw.close();
 				} catch (IOException e1) {

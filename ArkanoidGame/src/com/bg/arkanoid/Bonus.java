@@ -3,9 +3,10 @@ package com.bg.arkanoid;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.net.Authenticator.RequestorType;
+import java.util.Random;
 
 import com.bg.arkanoid.etypes.ETypeOfBonus;
 import com.bg.arkanoid.loaders.ImageLoader;
@@ -28,7 +29,10 @@ public class Bonus {
 
 	private static final double KOEF_OF_BALL_DIAM_INC = 1.5;
 
-	private static final double INC_SPEED_IF_ROCKET = 3;
+	private static final double INC_SPEED_IF_ROCKET = 4;
+	
+	private static final double DEFAULT_HEIGHT_OF_LINE = 1d;
+	private static final double DEFAULT_PLACE_BETWEEN_LINES = 1d;
 	
 	private ETypeOfBonus typeOfBonus;
 	
@@ -80,7 +84,6 @@ public class Bonus {
 		
 		if(typeOfBonus == ETypeOfBonus.DESTROYING_ROCKET){
 			setDeltaY(getDeltaY() * INC_SPEED_IF_ROCKET);
-			System.out.println(getDeltaY() + " " + getType().toString());
 		}
 	}
 
@@ -182,13 +185,24 @@ public class Bonus {
 			ArcanoidPanel.soundLoader.playSound(ETypeOfBonus.DESTROYING_ROCKET.toString());
 			
 		}else if(getType() == ETypeOfBonus.USUAL_BALL){
+			
 			ArcanoidPanel.ball.superBall = false;
 			ArcanoidPanel.ball.setColor(Ball.DEFAULT_COLOR);
-			
 			ArcanoidPanel.ball.setDiameter(Ball.DEFAULT_DIAMETER);
-			
 			ArcanoidPanel.soundLoader.playSound(ETypeOfBonus.USUAL_BALL.toString());
+			
+		}else if(getType() == ETypeOfBonus.SAVING_LINE){
+			
+			ArcanoidPanel.addLine(new SavingLine(new Color(new Random().nextInt(155) + 100, new Random().nextInt(155) + 100, new Random().nextInt(155) + 100), new Rectangle(0, (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() - DEFAULT_HEIGHT_OF_LINE - DEFAULT_PLACE_BETWEEN_LINES - (ArcanoidPanel.getNumberOfLines() * (DEFAULT_HEIGHT_OF_LINE + DEFAULT_PLACE_BETWEEN_LINES))), (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)DEFAULT_HEIGHT_OF_LINE)));
+			ArcanoidPanel.soundLoader.playSound(ETypeOfBonus.SAVING_LINE.toString());
+		
+		}else if(getType() == ETypeOfBonus.MAGNET_BAT){
+			
+			ArcanoidPanel.bat.magnetBat = true;
+			ArcanoidPanel.soundLoader.playSound(ETypeOfBonus.MAGNET_BAT.toString());
+			
 		}
+			
 		
 		ArcanoidPanel.removeBonus(this);
 	}
@@ -202,9 +216,11 @@ public class Bonus {
 		ArcanoidPanel.bat.setSize(ArcanoidPanel.bat.getNormalSize());
 		
 		ArcanoidPanel.ball.setDeltaX(Ball.DEFAULT_DELTA_X);
-		ArcanoidPanel.ball.setDeltaY( - Ball.DEFAULT_DELTA_Y);
+		ArcanoidPanel.ball.setDeltaY(Ball.DEFAULT_DELTA_Y);
 		
 		ArcanoidPanel.ball.setDiameter(Ball.DEFAULT_DIAMETER);
+		
+		ArcanoidPanel.bat.magnetBat = false;
 	}
 	
 	

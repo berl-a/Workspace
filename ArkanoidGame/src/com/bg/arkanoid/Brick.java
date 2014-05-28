@@ -110,7 +110,7 @@ public class Brick {
 			b.throughBonus();
 		}
 		
-		MainInArcanoid.panel.repaint();
+		MainInArcanoid.gamePanel.repaint();
 	}
 	
 	public ETypeOfBlock getTypeOfBlock() {
@@ -144,7 +144,7 @@ public class Brick {
 	
 	private void throughBonus() {
 		ArcanoidPanel.addBonus(getBonus());
-		MainInArcanoid.panel.repaint();
+		MainInArcanoid.gamePanel.repaint();
 	}
 	
 }

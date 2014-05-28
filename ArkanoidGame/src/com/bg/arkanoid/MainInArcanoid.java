@@ -4,10 +4,13 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import com.bg.arkanoid.possible_menu.PossibleMenuPanel;
+
 public class MainInArcanoid {
 
 	public static JFrame frame;
-	public static ArcanoidPanel panel;
+	public static ArcanoidPanel gamePanel;
+	public static PossibleMenuPanel menuPanel;
 	
 	public static void main(String[] args){
 		frame = new JFrame();
@@ -19,10 +22,16 @@ public class MainInArcanoid {
 	}
 
 	public static void startGame() {
-		panel = new ArcanoidPanel();
-		frame.setContentPane(panel);
-		frame.addKeyListener(panel);
-		frame.setVisible(true);
-	}
+		gamePanel = new ArcanoidPanel();
+		
+		frame.setContentPane(gamePanel);
+		frame.addKeyListener(gamePanel);
+		
+		//menuPanel = new PossibleMenuPanel();
+		//frame.setContentPane(menuPanel);
+		//frame.addMouseListener(menuPanel);
+		//frame.addMouseMotionListener(menuPanel);
+		
+		frame.setVisible(true);	}
 
 }

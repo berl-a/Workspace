@@ -23,6 +23,8 @@ public class SoundLoader {
 		"res/sounds/superBall.wav",
 		"res/sounds/superBall.wav",
 		"res/sounds/superBall.wav",
+		"res/sounds/superBall.wav",
+		"res/sounds/superBall.wav",
 		"res/sounds/superBall.wav"
 		
 	};
@@ -37,7 +39,9 @@ public class SoundLoader {
 		ETypeOfBonus.INC_BALL_SIZE.toString(),
 		ETypeOfBonus.DEC_BALL_SIZE.toString(),
 		ETypeOfBonus.DESTROYING_ROCKET.toString(),
-		ETypeOfBonus.USUAL_BALL.toString()
+		ETypeOfBonus.USUAL_BALL.toString(),
+		ETypeOfBonus.SAVING_LINE.toString(),
+		ETypeOfBonus.MAGNET_BAT.toString()
 	};
 	
 	public static LinkedHashMap<String, File> sounds = new LinkedHashMap<String, File>();
@@ -46,9 +50,9 @@ public class SoundLoader {
 	public boolean loadSounds(){
 		try{
 			for(int i = 0; i < urls.length; i++){
-				sounds.put(names[i], new File(urls[i]));
 				
-				//sounds.add(new File(getClass().getResource(url).toURI()));
+				//sounds.put(names[i], new File(urls[i]));
+				sounds.put(names[i], new File(getClass().getResource(urls[i]).toURI()));
 				
 				soundThreads.put(names[i], new MusicPlayer(sounds.get(names[i])));
 			}
@@ -78,7 +82,6 @@ public class SoundLoader {
 		
 		public void run(){
 			try {
-				System.out.println(musicFile.toString());
 				audioStream = AudioSystem.getAudioInputStream(musicFile);
 				clip = AudioSystem.getClip();
 				clip.open(audioStream);

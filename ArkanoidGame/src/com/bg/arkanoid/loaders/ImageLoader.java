@@ -20,7 +20,10 @@ public class ImageLoader {
 			"res/bigBall.png",
 			"res/smallBall.png",
 			"res/rocket.png",
-			"res/usual.png"
+			"res/usual.png",
+			"res/lines.png", 
+			"res/magnet.png",
+			"res/background.png"
 		};
 	
 	String[] names = {
@@ -33,7 +36,10 @@ public class ImageLoader {
 			ETypeOfBonus.INC_BALL_SIZE.toString(),
 			ETypeOfBonus.DEC_BALL_SIZE.toString(),
 			ETypeOfBonus.DESTROYING_ROCKET.toString(),
-			ETypeOfBonus.USUAL_BALL.toString()
+			ETypeOfBonus.USUAL_BALL.toString(),
+			ETypeOfBonus.SAVING_LINE.toString(),
+			ETypeOfBonus.MAGNET_BAT.toString(),
+			"game background"
 		};
 	
 	LinkedHashMap<String, BufferedImage> images = new LinkedHashMap<String, BufferedImage>(imageURLs.length); 
@@ -43,7 +49,8 @@ public class ImageLoader {
 			for(int i = 0; i < imageURLs.length; i++){
 				images.put(
 					names[i],
-					ImageIO.read(new File(imageURLs[i]))
+					//ImageIO.read(new File(imageURLs[i]))
+					ImageIO.read(getClass().getResource(imageURLs[i]))
 				);
 			}
 			return true;

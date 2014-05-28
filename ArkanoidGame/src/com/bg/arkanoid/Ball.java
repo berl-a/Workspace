@@ -4,19 +4,24 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Random;
 
 public class Ball {
 
-	public static final double DEFAULT_DELTA_X = 3d;
-	public static final double DEFAULT_DELTA_Y = 3d;
+	public static final double DEFAULT_DELTA_X = 2d;
+	public static final double DEFAULT_DELTA_Y = - 2d;
 	
-	public static final double DEFAULT_DIAMETER = 15d;
+	public static final double DEFAULT_DIAMETER = 20d;
 
 	private static final Point DEFAULT_COORD = new Point((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2 - DEFAULT_DIAMETER / 2), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight() -  DEFAULT_DIAMETER * 5));
 
-	public static final Color DEFAULT_COLOR = Color.YELLOW;
+	public static final Color DEFAULT_COLOR = Color.PINK;
 	
-	public static final Color SUPER_BALL_COLOR = Color.BLUE.brighter();
+	public static final Color SUPER_BALL_COLOR = new Color(new Random().nextInt(155) + 100, new Random().nextInt(155) + 100, new Random().nextInt(155) + 100);
+	
+	public boolean holdNearBat = true;
+	
+	public boolean isMagnetted = false;
 	
 	public boolean superBall = false;
 	
@@ -25,7 +30,7 @@ public class Ball {
 		setDiameter(DEFAULT_DIAMETER);
 		setColor(DEFAULT_COLOR);
 		setDeltaX(DEFAULT_DELTA_X);
-		setDeltaY( - DEFAULT_DELTA_Y);
+		setDeltaY(DEFAULT_DELTA_Y);
 	}
 	
 	private Point coord;
@@ -113,6 +118,5 @@ public class Ball {
 	public void setAddDeltaY(double addDeltaY) {
 		this.addDeltaY = addDeltaY;
 	}
-	
-	
+
 }

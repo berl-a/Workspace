@@ -39,6 +39,8 @@ public class MyColorChooser implements ColorSelectionModel, MouseListener {
 	
 	public MyColorChooser(){
 		
+		System.out.println("Creating frame...");
+		
 		frame = new JFrame();
 
 		frame.setBounds(0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
@@ -47,6 +49,8 @@ public class MyColorChooser implements ColorSelectionModel, MouseListener {
 		panel = new JPanel(){
 			
 			public void paint(Graphics g){
+				
+				System.out.println("paint");
 				
 				Graphics2D g2d = (Graphics2D) g;
 				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -77,6 +81,10 @@ public class MyColorChooser implements ColorSelectionModel, MouseListener {
 		
 	}
 
+	public JPanel getPanel(){
+		return panel;
+	}
+	
 	public void addChangeListener(ChangeListener arg0) {
 		// TODO Auto-generated method stub
 		
@@ -119,7 +127,6 @@ public class MyColorChooser implements ColorSelectionModel, MouseListener {
 	}
 
 	void finish() {
-		System.out.println("Finish inside");
 		finished = true;
 		frame.setVisible(false);
 	}

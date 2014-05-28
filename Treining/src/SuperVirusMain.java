@@ -17,6 +17,7 @@ public class SuperVirusMain {
 		
 		final JFrame frame=new JFrame("");
 		frame.setBounds(0,0,(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		frame.setUndecorated(true);
 		frame.add(new SuperVirus());
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

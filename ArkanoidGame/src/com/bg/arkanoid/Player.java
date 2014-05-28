@@ -16,7 +16,12 @@ public class Player {
 		setName(name);
 	}
 	
-	public void endGame(){
+	public void winGame(){
+		JOptionPane.showMessageDialog(null, "You won");
+		System.exit(0);
+	}
+	
+	public void loseGame(){
 		JOptionPane.showMessageDialog(null, "You lose");
 		System.exit(0);
 	}
@@ -43,9 +48,11 @@ public class Player {
 	public void loseBall() {
 		
 		if(getLifes() == 0)
-			endGame();
-		else
+			loseGame();
+		else{
 			setLifes(getLifes() - 1);
+			ArcanoidPanel.ball.holdNearBat = true;
+		}
 		
 		if(Bonus.backCoordWhenBallFalls){
 			ArcanoidPanel.bat.setCoord(Bonus.oldCoordOfBat);
@@ -54,7 +61,9 @@ public class Player {
 		
 		ArcanoidPanel.ball.setDeltaX(Ball.DEFAULT_DELTA_X);
 		ArcanoidPanel.ball.setDeltaY(Ball.DEFAULT_DELTA_Y);
-		ArcanoidPanel.ball.setCoord(new Point((int)(ArcanoidPanel.bat.getCoord().getX() + (ArcanoidPanel.bat.getSize().getWidth() + ArcanoidPanel.ball.getDiameter()) / 2), (int)ArcanoidPanel.bat.getCoord().getY() - 40));
+		
+		if(!ArcanoidPanel.ball.holdNearBat)
+			ArcanoidPanel.ball.setCoord(new Point((int)(ArcanoidPanel.bat.getCoord().getX() + (ArcanoidPanel.bat.getSize().getWidth() + ArcanoidPanel.ball.getDiameter()) / 2), (int)ArcanoidPanel.bat.getCoord().getY() - 40));
 		
 		Bonus.looseEffect();
 	}

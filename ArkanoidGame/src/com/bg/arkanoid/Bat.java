@@ -14,6 +14,8 @@ public class Bat {
 	private Color color;
 	private double deltaX;
 	
+	public boolean magnetBat = false;
+	
 	public Point getCoord() {
 		return coord;
 	}
@@ -44,25 +46,32 @@ public class Bat {
 	
 	
 	public Line2D getUp0(){
-		return new Line2D.Double(getCoord().getX(), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5), getCoord().getY());
+		return new Line2D.Double(getCoord().getX(), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7), getCoord().getY());
 	}
 	
 	public Line2D getUp1(){
-		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 2), getCoord().getY());
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 2), getCoord().getY());
 	}
 	
 	public Line2D getUp2(){
-		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 2), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 3), getCoord().getY());
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7 * 2), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 3), getCoord().getY());
 	}
 	
 	public Line2D getUp3(){
-		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 3), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 4), getCoord().getY());
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7 * 3), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 4), getCoord().getY());
 	}
 	
 	public Line2D getUp4(){
-		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 5 * 4), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 5 * 5), getCoord().getY());
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7 * 4), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 5), getCoord().getY());
 	}
 	
+	public Line2D getUp5(){
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7 * 5), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 6), getCoord().getY());
+	}
+	
+	public Line2D getUp6(){
+		return new Line2D.Double(getCoord().getX() + (getSize().getWidth() / 7 * 6), getCoord().getY(), getCoord().getX() + (getSize().getWidth() / 7 * 7), getCoord().getY());
+	}
 	
 	/*
 	public Line2D getUp0(){

@@ -19,15 +19,13 @@ import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction;
 
 import com.bg.arkanoid.etypes.ETypeOfBlock;
 import com.bg.arkanoid.loaders.ImageLoader;
@@ -38,24 +36,23 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 	
 	private static final long serialVersionUID = 1L;
 
-	private static final int DELAY_OF_REFRESHING = 5;
+	private static final int DELAY_OF_REFRESHING = 2;
 	
-	private static final String URL_OF_BACK_PICTURE = "res/blured.png";
+	private static final int BLUR_NUMBER = 5;
 
-	private static final int BLUR_NUMBER = 10;
-
-	private static final int DEFAULT_BAT_DELTA_X = 10;
+	private static final int DEFAULT_BAT_DELTA_X = 7;
 
 	private static final int SIZE_OF_TEXT = 50;
-
-	private static final int BALL_ALPHA_DELAY = 20;
+	
+	private static final int SCORES_FOR_BONUS = 20;
 	
 	Timer mainTimer;
 	public static SoundLoader soundLoader;
 	public static ImageLoader imageLoader;
 	
 	public static LinkedList<Brick> bricks = new LinkedList<Brick>();
-	private static volatile LinkedList<Bonus> bonuses = new LinkedList<Bonus>();
+	private static LinkedList<Bonus> bonuses = new LinkedList<Bonus>();
+	private static LinkedList<SavingLine> lines = new LinkedList<SavingLine>();
 	public static Player player;
 	public static Ball ball = new Ball();
 	public static Bat bat = new Bat();
@@ -72,10 +69,11 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		
 		new CoordReader().readCoordinates();
 		
-		setBackground(bricks.get(bricks.size() - 2).getColor());
-		setBackground(Color.DARK_GRAY);
+		//setBackground(bricks.get(bricks.size() - 2).getColor());
+		//setBackground(Color.WHITE);
 		
 		player = new Player("Roman");
+		player.setLifes(10);
 		
 		ball = new Ball();
 		//ball.setColor(bricks.get(bricks.size() - 1).getColor());
@@ -93,9 +91,9 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		soundLoader.loadSounds();
 		
 		//Loading background
-		/*
+		
 		try {
-			backImage = ImageIO.read(new File(URL_OF_BACK_PICTURE));
+			backImage = imageLoader.getImage("game background");
 			
 			float[] matrix = new float[BLUR_NUMBER * BLUR_NUMBER];
 			for (int i = 0; i < BLUR_NUMBER * BLUR_NUMBER; i++)
@@ -107,11 +105,8 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 			media_tracker.addImage(backImage, 0);
 			try{
 		        media_tracker.waitForID(0);
-			}catch(InterruptedException e){
-			    System.out.println("Image loading was interrupted");
-			}
+			}catch(InterruptedException e){}
 		}catch(Exception e){}
-		*/
 		
 		mainTimer.start();
 		
@@ -123,8 +118,16 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		
 		//Ball placing
 		Point newLocation = new Point();
-		newLocation.setLocation(ball.getCoord().getX() + ball.getDeltaX() + ball.getAddDeltaX() ,  ball.getCoord().getY() + ball.getDeltaY() + ball.getAddDeltaY());
-		ball.setCoord(newLocation);
+		
+		if((!ball.holdNearBat) && (!ball.isMagnetted)){
+			newLocation.setLocation(ball.getCoord().getX() + ball.getDeltaX() + ball.getAddDeltaX() ,  ball.getCoord().getY() + ball.getDeltaY() + ball.getAddDeltaY());
+			ball.setCoord(newLocation);
+		}else if(ball.holdNearBat){
+			newLocation.setLocation(bat.getCoord().getX() + (bat.getSize().getWidth() / 2 - ball.getDiameter() / 2), bat.getCoord().getY() - ball.getDiameter() - 1);
+			ball.setCoord(newLocation);
+		}
+			//else if(ball.isMagnetted)
+		//	newLocation.setLocation(bat.getCoord().getX() + ball.getCoordBeforeMagnating().getX(), bat.getCoord().getY() + ball.getCoordBeforeMagnating().getY());
 		
 		//Checking blocks' intersections
 		List<Brick> brickToDelete = new LinkedList<Brick>();
@@ -157,6 +160,7 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		for(Bonus b : bonuses){
 			if(new Rectangle((int)b.getCoord().getX(), (int)b.getCoord().getY(), (int)b.getSize().getWidth(), (int)b.getSize().getHeight()).intersects(batR)){
 				bonusesToGetEffect.add(b);
+				player.setScores(player.getScores() + SCORES_FOR_BONUS);
 			}
 		}
 		for(Bonus b : bonusesToGetEffect)
@@ -164,9 +168,25 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		
 		//Placing bat
 		if(bat.getDeltaX() != 0){
-			if(new Rectangle(0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()).contains(new Rectangle((int)(bat.getCoord().getX() + bat.getDeltaX()), (int)bat.getCoord().getY(), (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight())))
+			if(new Rectangle(0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight()).contains(new Rectangle((int)(bat.getCoord().getX() + bat.getDeltaX()), (int)bat.getCoord().getY(), (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight()))){
 				bat.setCoord(new Point( (int)(bat.getCoord().getX() + bat.getDeltaX()), (int)bat.getCoord().getY()));
+				if(ball.isMagnetted)
+					ball.setCoord(new Point((int)(ball.getCoord().getX() + bat.getDeltaX()), (int)ball.getCoord().getY()));
+			}
 		}
+		
+		//Getting bat away from walls
+		if(new Rectangle((int)(bat.getCoord().getX() + bat.getDeltaX()), (int)bat.getCoord().getY(), (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight()).intersectsLine(left)){
+			bat.setCoord(new Point((int)bat.getCoord().getX() + 2, (int)bat.getCoord().getY()));	
+			if(ball.isMagnetted)
+				ball.setCoord(new Point((int)ball.getCoord().getX() + 2, (int)ball.getCoord().getY()));
+		}
+		if(new Rectangle((int)(bat.getCoord().getX() + bat.getDeltaX()), (int)bat.getCoord().getY(), (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight()).intersectsLine(right)){
+			bat.setCoord(new Point((int)bat.getCoord().getX() - 2, (int)bat.getCoord().getY()));
+			if(ball.isMagnetted)
+				ball.setCoord(new Point((int)ball.getCoord().getX() - 2, (int)ball.getCoord().getY()));
+		}
+		
 		
 		//Checking bat's intersections
 		if(ball.getRect().intersectsLine(bat.getUp0())){
@@ -176,72 +196,123 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 					ball.setDeltaX( - ball.getDeltaX());
 					ball.setDeltaY( - ball.getDeltaY());
 				}else if(ball.getDeltaX() < 0){
-					ball.setDeltaX( + ball.getDeltaX() * 1.3);
-					ball.setDeltaY( - ball.getDeltaY() / 1.3);
+					ball.setDeltaX( + ball.getDeltaX() * 1.35);
+					ball.setDeltaY( - ball.getDeltaY() / 1.35);
 				}else{
-					ball.setDeltaX( - Ball.DEFAULT_DELTA_X * 1.3);
-					ball.setDeltaY( - ball.getDeltaY() / 1.3);
+					ball.setDeltaX( - Ball.DEFAULT_DELTA_X * 1.35);
+					ball.setDeltaY( - ball.getDeltaY() / 1.35);
 				}
 				hadTouchedBat = true;
 			}
+			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
 			
 		}else if(ball.getRect().intersectsLine(bat.getUp1())){
 			
 			if(!hadTouchedBat){
 				if(ball.getDeltaX() > 0){
-					ball.setDeltaX( - ball.getDeltaX() * 1.1);
-					ball.setDeltaY( - ball.getDeltaY() / 1.1);
+					ball.setDeltaX( - ball.getDeltaX() / 1.25);
+					ball.setDeltaY( - ball.getDeltaY() * 1.25);
+				}else if(ball.getDeltaX() < 0){
+					ball.setDeltaX( + ball.getDeltaX() * 1.25);
+					ball.setDeltaY( - ball.getDeltaY() / 1.25);
+				}else{
+					ball.setDeltaX( - Ball.DEFAULT_DELTA_X * 1.25);
+					ball.setDeltaY( - ball.getDeltaY() / 1.25);
+				}
+				hadTouchedBat = true;
+			}
+			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
+			
+		}else if(ball.getRect().intersectsLine(bat.getUp2())){
+			
+			if(!hadTouchedBat){
+				if(ball.getDeltaX() > 0){
+					ball.setDeltaX( - ball.getDeltaX() / 1.1);
+					ball.setDeltaY( - ball.getDeltaY() * 1.1);
 				}else if(ball.getDeltaX() < 0){
 					ball.setDeltaX( + ball.getDeltaX() * 1.1);
 					ball.setDeltaY( - ball.getDeltaY() / 1.1);
 				}else{
-					ball.setDeltaX( - Ball.DEFAULT_DELTA_X / 1.1);
-					ball.setDeltaY( - ball.getDeltaY() * 1.1);
+					ball.setDeltaX( - Ball.DEFAULT_DELTA_X * 1.1);
+					ball.setDeltaY( - ball.getDeltaY() / 1.1);
 				}
 				hadTouchedBat = true;
 			}
+			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
 		
 		
-		}else if(ball.getRect().intersectsLine(bat.getUp2())){
+		}else if(ball.getRect().intersectsLine(bat.getUp3())){
 			
 			if(!hadTouchedBat){
 				ball.setDeltaY( - ball.getDeltaY());
 				hadTouchedBat = true;
 			}
-				
-		}else if(ball.getRect().intersectsLine(bat.getUp3())){
+			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
+			
+		}else if(ball.getRect().intersectsLine(bat.getUp4())){
 
 			if(!hadTouchedBat){
 				if(ball.getDeltaX() > 0){
 					ball.setDeltaX( + ball.getDeltaX() * 1.1);
 					ball.setDeltaY( - ball.getDeltaY() / 1.1);
 				}else if(ball.getDeltaX() < 0){
-					ball.setDeltaX( - ball.getDeltaX() * 1.1);
-					ball.setDeltaY( - ball.getDeltaY() / 1.1);
+					ball.setDeltaX( - ball.getDeltaX() / 1.1);
+					ball.setDeltaY( - ball.getDeltaY() * 1.1);
 				}else{
 					ball.setDeltaX( + Ball.DEFAULT_DELTA_X * 1.1);
 					ball.setDeltaY( - ball.getDeltaY() / 1.1);
 				}
 				hadTouchedBat = true;
 			}
-		
-		
-		}else if(ball.getRect().intersectsLine(bat.getUp4())){
+			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
+			
+		}else if(ball.getRect().intersectsLine(bat.getUp5())){
+
+				if(!hadTouchedBat){
+					if(ball.getDeltaX() > 0){
+						ball.setDeltaX( + ball.getDeltaX() * 1.25);
+						ball.setDeltaY( - ball.getDeltaY() / 1.25);
+					}else if(ball.getDeltaX() < 0){
+						ball.setDeltaX( - ball.getDeltaX() / 1.25);
+						ball.setDeltaY( - ball.getDeltaY() * 1.25);
+					}else{
+						ball.setDeltaX( + Ball.DEFAULT_DELTA_X * 1.25);
+						ball.setDeltaY( - ball.getDeltaY() / 1.25);
+					}
+					hadTouchedBat = true;
+				}
+				
+				if(bat.magnetBat)
+					ball.isMagnetted = true;
+			
+		}else if(ball.getRect().intersectsLine(bat.getUp6())){
 			
 			if(!hadTouchedBat){
 				if(ball.getDeltaX() > 0){
-					ball.setDeltaX( + ball.getDeltaX() * 1.3);
-					ball.setDeltaY( - ball.getDeltaY() / 1.3);
+					ball.setDeltaX( + ball.getDeltaX() * 1.35);
+					ball.setDeltaY( - ball.getDeltaY() / 1.35);
 				}else if(ball.getDeltaX() < 0){
 					ball.setDeltaX( - ball.getDeltaX());
 					ball.setDeltaY( - ball.getDeltaY());
 				}else{
-					ball.setDeltaX( + Ball.DEFAULT_DELTA_X * 1.3);
-					ball.setDeltaY( - ball.getDeltaY() / 1.3);
+					ball.setDeltaX( + Ball.DEFAULT_DELTA_X * 1.35);
+					ball.setDeltaY( - ball.getDeltaY() / 1.35);
 				}
 				hadTouchedBat = true;
 			}
 			
+			if(bat.magnetBat)
+				ball.isMagnetted = true;
 			
 		}else if(   (ball.getRect().intersectsLine(bat.getLeft()))  ||  (ball.getRect().intersectsLine(bat.getRight()))   ){
 			if(!hadTouchedBat){
@@ -250,6 +321,18 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 			}
 		}else
 			hadTouchedBat = false;
+		
+		
+		//Ball's intersection with saving line
+		LinkedList<SavingLine> linesToRemove = new LinkedList<SavingLine>();
+		for(SavingLine line : lines){
+			if(ball.getRect().intersects(line.getRect())){
+				ball.setDeltaY( - ball.getDeltaY());
+				linesToRemove.add(line);
+			}
+		}
+		for(SavingLine line : linesToRemove)
+			lines.remove(line);
 		
 		
 		//Out-of-screen block
@@ -265,10 +348,12 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 			player.loseBall();
 		
 		//Checking lose
-		if( ball.getRect().intersectsLine(down) ){
-			System.out.println("down");
+		if( ball.getRect().intersectsLine(down) )
 			player.loseBall();
-		}
+		
+		//Checking win
+		if(bricks.isEmpty())
+			player.winGame();
 		
 		repaint();
 	}
@@ -280,7 +365,7 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		//Low speed with antialiasing
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		//g.drawImage(backImage, 0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
+		g.drawImage(backImage, 0, 0, (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
 		
 		for(Brick brick : bricks){
 			g.setColor(brick.getColor());			
@@ -297,25 +382,58 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 			}
 		}
 		
-		for(Bonus bonus : bonuses){
+		for(Bonus bonus : bonuses)
 			g.drawImage(bonus.getImage(), null, (int)bonus.getCoord().getX(), (int)bonus.getCoord().getY());
-			//g.setColor(Color.BLUE);
-			//g.fillRect((int)bonus.getCoord().getX(), (int)bonus.getCoord().getY(), (int)bonus.getSize().getWidth(), (int)bonus.getSize().getHeight());
-		}
+			
 		
 		g.setColor(ball.getColor());
 		g.fillArc((int)ball.getCoord().getX(), (int)ball.getCoord().getY(), (int)ball.getDiameter(), (int)ball.getDiameter(), 0, 360);
 		
 		if(ball.superBall){
-			for(int i = 0; i < (255 / BALL_ALPHA_DELAY); i++){
-				g.setColor(new Color(ball.getColor().getRed(), ball.getColor().getGreen(), ball.getColor().getBlue(), 255 - BALL_ALPHA_DELAY * i));
-				g.fillArc((int)ball.getCoord().getX() - (int)ball.getDeltaX() / 2 * i, (int)ball.getCoord().getY() - (int)ball.getDeltaY() / 2 * i, (int)(ball.getDiameter() - i * 0.8), (int)(ball.getDiameter() - i * 0.8), 0, 360);
-			}
+			
+			Random r = new Random();
+			
+			int red = ball.getColor().getRed(), green = ball.getColor().getGreen(), blue = ball.getColor().getBlue(), alpha = ball.getColor().getAlpha();
+			
+			int whatParamToChange = r.nextInt(4);
+			
+			if(whatParamToChange == 0)
+				red = ball.getColor().getRed() + r.nextInt(60) - 30;
+			if(whatParamToChange == 1)
+				green = ball.getColor().getGreen() + r.nextInt(60) - 30;
+			if(whatParamToChange == 2)
+				blue = ball.getColor().getBlue() + r.nextInt(60) - 30;
+			if(whatParamToChange == 3)
+				alpha = ball.getColor().getAlpha() + r.nextInt(60) - 30;
+			
+			if((red < 0) || (red > 255))
+				red = ball.getColor().getRed();
+			if((green < 0) || (green > 255))
+				green = ball.getColor().getGreen();
+			if((blue < 0) || (blue > 255))
+				blue = ball.getColor().getBlue();
+			if((alpha < 0) || (alpha > 255))
+				alpha = ball.getColor().getAlpha();
+			
+			g.setColor(new Color(red, green, blue, alpha));
+			g.fillArc((int)ball.getCoord().getX(), (int)ball.getCoord().getY(), (int)(ball.getDiameter()), (int)(ball.getDiameter()), 0, 360);
+		}
+		
+		if(bat.magnetBat){
+			g.setColor(new Color(0, 0, 150, 50));
+			g.fillOval((int)bat.getCoord().getX(), (int)(bat.getCoord().getY() - bat.getSize().getHeight() / 2), (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight());
 		}
 		
 		g.setColor(bat.getColor());
-		g.fillRoundRect(bat.getCoord().x, bat.getCoord().y, (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight(), (int)bat.getSize().getWidth() / 2, (int)bat.getSize().getHeight() / 2);
+		g.fillRoundRect(bat.getCoord().x, bat.getCoord().y, (int)bat.getSize().getWidth(), (int)bat.getSize().getHeight(), (int)bat.getSize().getWidth() / 3, (int)bat.getSize().getHeight() / 3);
 	
+		
+			
+		
+		for(SavingLine line : lines){
+			g.setColor(line.getColor());
+			g.fill(line.getRect());
+		}
 		
 		//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
@@ -327,6 +445,18 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 		g.setColor(new Color(20, 200, 20, 150));
 		g.drawString(String.valueOf(player.getLifes()), 10, 100);
 	}
+	
+	public static void addLine(SavingLine line){
+		lines.add(line);
+	}
+	
+	public static void removeLine(SavingLine line){
+		lines.remove(line);
+	}
+	
+	public static int getNumberOfLines(){
+		return lines.size();
+	}
 
 	public static void addBonus(Bonus bonus) {
 		bonuses.add(bonus);
@@ -337,6 +467,7 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 	}
 	
 	public void keyPressed(KeyEvent e) {
+		//System.out.println(e.getKeyCode());
 		
 		if(e.getKeyCode() == 37){
 			bat.setDeltaX( - DEFAULT_BAT_DELTA_X);
@@ -344,14 +475,21 @@ public class ArcanoidPanel extends JPanel implements ActionListener, KeyListener
 			bat.setDeltaX(DEFAULT_BAT_DELTA_X);
 		}
 		
-		if(e.getKeyCode() == 40){
-			//ball.setAddDeltaX(ball.getDeltaX() * 4);
-			//ball.setAddDeltaY(ball.getDeltaY() * 4);
-			ball.setDeltaY(ball.getDeltaY() + 0.2);
+		if(e.getKeyCode() == 38){
+			ball.holdNearBat = false;
+			ball.isMagnetted = false;
 		}
+		
+		
+		if(e.getKeyCode() == 40){
+			ball.setAddDeltaX(ball.getDeltaX() * 2);
+			ball.setAddDeltaY(ball.getDeltaY() * 2);
+		}
+		
 	}
 
 	public void keyReleased(KeyEvent e) {
+		
 		if( (e.getKeyCode() == 37 ) || (e.getKeyCode() == 39) ){
 			bat.setDeltaX(0);
 		}

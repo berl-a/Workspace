@@ -3,7 +3,6 @@ package com.bg.arkanoid;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -20,6 +19,7 @@ public class CoordReader {
 		int nowIndexOfBlock = 0;
 		
 		try {
+			
 			JFileChooser chooser = new JFileChooser();
 			chooser.setApproveButtonText("I want to play this level");
 			chooser.setMultiSelectionEnabled(false);
